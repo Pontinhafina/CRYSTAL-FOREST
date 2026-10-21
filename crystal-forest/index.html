@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Crystal Forest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="960" height="544"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-left">
+      <div class="chip" id="hearts"></div>
+      <div class="chip life" id="lives"></div>
+    </div>
+    <div class="hud-center" id="lvname"></div>
+    <div class="hud-right">
+      <div class="chip gold" id="gems"></div>
+      <button class="icon-btn" id="btnPause" aria-label="Pausar">❚❚</button>
+    </div>
+    <div class="dash"><span>DASH</span><div class="dashtrack"><i id="dashfill"></i></div></div>
+    <div id="bossbar" class="hidden"><b>DRAGÃO DE CRISTAL</b><div class="segs" id="bossSegs"></div></div>
+  </div>
+
+  <!-- MENU -->
+  <div id="menu" class="screen">
+    <div class="menu-box">
+      <div class="logo"><span>CRYSTAL</span><span class="l2">FOREST</span></div>
+      <p class="tag">A aventura da raposa Lumi pela floresta cristalina</p>
+      <button class="btn primary big" id="bPlay">▶ JOGAR</button>
+      <button class="btn secondary" id="bLevels">FASES</button>
+      <button class="btn light" id="bSettings">OPÇÕES</button>
+      <div class="help">
+        <div><kbd>← →</kbd>/<kbd>A D</kbd> mover</div>
+        <div><kbd>Espaço</kbd>/<kbd>W</kbd> pular (2x no ar)</div>
+        <div><kbd>Shift</kbd>/<kbd>X</kbd> dash &nbsp; <kbd>Esc</kbd> pausa</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECAO DE FASES -->
+  <div id="levels" class="screen hidden">
+    <div class="panel wide">
+      <div class="ribbon">ESCOLHA O MUNDO</div>
+      <div class="cards" id="cards"></div>
+      <button class="btn light" data-back>← VOLTAR</button>
+    </div>
+  </div>
+
+  <!-- OPCOES -->
+  <div id="settings" class="screen hidden">
+    <div class="panel">
+      <div class="ribbon blue">OPÇÕES</div>
+      <label class="row">Música <input type="range" id="volMusic" min="0" max="100"></label>
+      <label class="row">Efeitos <input type="range" id="volSfx" min="0" max="100"></label>
+      <button class="btn secondary" id="bReset">APAGAR PROGRESSO</button>
+      <button class="btn light" data-back>← VOLTAR</button>
+    </div>
+  </div>
+
+  <!-- PAUSE -->
+  <div id="pause" class="screen hidden dim">
+    <div class="panel">
+      <div class="ribbon">PAUSADO</div>
+      <button class="btn primary" id="bResume">CONTINUAR</button>
+      <button class="btn secondary" id="bRestart">REINICIAR</button>
+      <button class="btn light" id="bToMenu">MENU</button>
+    </div>
+  </div>
+
+  <!-- GAME OVER -->
+  <div id="over" class="screen hidden dim">
+    <div class="panel">
+      <div class="ribbon red">FIM DE JOGO</div>
+      <p class="msg">Lumi precisa de outra chance!</p>
+      <button class="btn primary" id="bRetry">TENTAR DE NOVO</button>
+      <button class="btn light" id="bOverMenu">MENU</button>
+    </div>
+  </div>
+
+  <!-- FASE COMPLETA -->
+  <div id="complete" class="screen hidden dim">
+    <div class="panel">
+      <div class="ribbon" id="cTitle">FASE COMPLETA!</div>
+      <div class="stars" id="cStars"></div>
+      <div class="stats" id="cStats"></div>
+      <button class="btn primary" id="bNext">PRÓXIMA FASE ▶</button>
+      <button class="btn secondary" id="bAgain">REPETIR</button>
+      <button class="btn light" id="bCompMenu">MENU</button>
+    </div>
+  </div>
+</div>
+
+<!-- Controles de toque -->
+<div id="touch">
+  <div class="tleft"><button data-k="left">◀</button><button data-k="right">▶</button></div>
+  <div class="tright"><button data-k="dash" class="d">DASH</button><button data-k="jump" class="j">PULAR</button></div>
+</div>
+
+<script src="js/levels.js"></script>
+<script src="js/art.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
